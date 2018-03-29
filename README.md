@@ -1,6 +1,10 @@
 
+# Vagrant
+
 ```sh
-➜ vagrant box add -f centos-7.2 centos-7.2.box
+➜ wget https://www.dropbox.com/s/nuz6ts1hlx4vy27/vagrant-centos-7.2.box\?dl\=0 -O vagrant-centos-7.2.box
+
+➜ vagrant box add -f centos-7.2 vagrant-centos-7.2.box
 
 ➜ cd base
 
