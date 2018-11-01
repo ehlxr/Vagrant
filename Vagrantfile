@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
             cfg.vbguest.auto_update = false
 
             cfg.vm.synced_folder "/Users/ehlxr/works/Vagrant/vm_share", "/share"
-            cfg.vm.synced_folder "/Users/ehlxr/works/Vagrant", "/vagrant", disabled: true
+            cfg.vm.synced_folder "/Users/ehlxr/works/Vagrant", "/vagrant"
 
             # 开机运行命令
             # cfg.vm.provision "shell", run: "always", inline: <<-SHELL
