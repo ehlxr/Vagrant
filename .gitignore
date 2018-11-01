@@ -1,3 +1,4 @@
 *.key
 *.box
 .vagrant
+vm_share

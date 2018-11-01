@@ -27,6 +27,7 @@ git clone https://github.com/zsh-users/zsh-history-substring-search.git /root/.o
 
 echo -e "\033[1;33mConfig oh-my-zsh...\033[0m"
 cp -f /vagrant/config/zshrc ~/.zshrc
+cp -f /vagrant/config/my.zsh ~/.oh-my-zsh/custom/
 
 echo -e "\033[1;33mConfig ssh...\033[0m"
 mkdir -p ~/.ssh && cat /vagrant/config/authorized.key >> ~/.ssh/authorized_keys
@@ -51,6 +52,6 @@ echo -e "\033[1;33mStart and enable Docker...\033[0m"
 systemctl enable docker
 systemctl start docker
 
-echo -e "\033[1;33mVboxadd setup...\033[0m"
-cd /opt/VBoxGuestAdditions-*/init
-./vboxadd setup
+# echo -e "\033[1;33mVboxadd setup...\033[0m"
+# cd /opt/VBoxGuestAdditions-*/init
+# ./vboxadd setup
