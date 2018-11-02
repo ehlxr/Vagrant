@@ -26,6 +26,7 @@
 # onedrive.live.com、drive.google.com、pan.baidu.com 下载 centos-7.2-ehlxr.box
 
 ➜ vagrant box add -f centos-7.2-ehlxr centos-7.2-ehlxr.box
+# vagrant package --base vghost1 --output centos-ehlxr.box
 
 ➜ vagrant up # 执行 init.sh 脚本时，最好保证能够 fq
 
