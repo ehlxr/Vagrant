@@ -45,8 +45,8 @@ Vagrant.configure("2") do |config|
             # do NOT check the correct additions version when booting this machine（插件安装：vagrant plugin install vagrant-vbguest）
             cfg.vbguest.auto_update = false
 
-            cfg.vm.synced_folder "/Users/ehlxr/works/Vagrant/vm_share", "/root/"
-            cfg.vm.synced_folder "/Users/ehlxr/works/Vagrant", "/vagrant", disabled: true
+            cfg.vm.synced_folder "E:\\ehlxr\\Vagrant", "/vagrant", disabled: true
+            cfg.vm.synced_folder "E:\\ehlxr\\Vagrant\\vm_share", "/root"
 
             # 开机运行命令
             cfg.vm.provision "shell", run: "always", inline: <<-SHELL
