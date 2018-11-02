@@ -49,14 +49,15 @@ Vagrant.configure("2") do |config|
             cfg.vm.synced_folder "/Users/ehlxr/works/Vagrant", "/vagrant"
 
             # 开机运行命令
-            # cfg.vm.provision "shell", run: "always", inline: <<-SHELL
-            #     echo -e "\033[1;33mInit cmd...\033[0m"
-            #     echo -e "\033[1;33mConfig ssh...\033[0m"
-            #     mkdir -p ~/.ssh && cat /vagrant/config/authorized.key >> ~/.ssh/authorized_keys
-            #     sed -i 's/^#RSAAuthentication.*/RSAAuthentication\ yes/g' /etc/ssh/sshd_config
-            #     sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication\ yes/g' /etc/ssh/sshd_config
-            #     sed -i 's/^PasswordAuthentication.*/PasswordAuthentication\ yes/g' /etc/ssh/sshd_config
-            # SHELL
+            cfg.vm.provision "shell", run: "always", inline: <<-SHELL
+                echo -e "\033[1;33mConfig ssh...\033[0m"
+                mkdir -p ~/.ssh && cat /share/config/authorized.key >> ~/.ssh/authorized_keys
+                sed -i 's/^#RSAAuthentication.*/RSAAuthentication\ yes/g' /etc/ssh/sshd_config
+                sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication\ yes/g' /etc/ssh/sshd_config
+                sed -i 's/^PasswordAuthentication.*/PasswordAuthentication\ yes/g' /etc/ssh/sshd_config
+                echo -e "\033[1;33mConfig dns...\033[0m"
+                cp /share/config/resolv.conf /etc/
+            SHELL
 
             # 自定义初始化执行脚本
             # cfg.vm.provision "shell", path: "config/init.sh"

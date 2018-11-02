@@ -35,6 +35,9 @@ sed -i 's/^#RSAAuthentication.*/RSAAuthentication\ yes/g' /etc/ssh/sshd_config
 sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication\ yes/g' /etc/ssh/sshd_config
 sed -i 's/^PasswordAuthentication.*/PasswordAuthentication\ yes/g' /etc/ssh/sshd_config
 
+echo -e "\033[1;33mConfig dns...\033[0m"
+cp /vagrant/config/resolv.conf /etc/
+
 # echo -e "\033[1;33mUpdating kernel...\033[0m"
 # rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 # rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
