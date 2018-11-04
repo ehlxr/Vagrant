@@ -2,14 +2,14 @@ Vagrant.configure("2") do |config|
     # 定义虚拟机数量
     vms = Array(1..5)
     vms.each do |i|
-        config.vm.define "vg#{i}" do |cfg|
+        config.vm.define "vm#{i}" do |cfg|
             # 设置虚拟机的 Box
-            cfg.vm.box = "centos-7.2-ehlxr"
+            cfg.vm.box = "centos-7.5-ehlxr"
 
             # 不检查 box 更新
             cfg.vm.box_check_update = false
             # 设置虚拟机的主机名
-            cfg.vm.hostname="vg#{i}.node"
+            cfg.vm.hostname="vm.node#{i}"
             # cfg.vm.network "forwarded_port", guest: 80, host: 8080
 
             # hostonly
@@ -27,13 +27,13 @@ Vagrant.configure("2") do |config|
                 vb.cpus = 1
 
                 # 名称指的是在 VirtualBox 中显示的名称
-                vb.name = "vghost#{i}"
+                vb.name = "vmhost#{i}"
             end
 
             # 增加各节点 host 配置（插件安装：vagrant plugin install vagrant-hosts）
             cfg.vm.provision :hosts do |provisioner|
                 vms.each do |x|
-                    provisioner.add_host "192.168.3.10#{x}", ["vg#{x}.node"]
+                    provisioner.add_host "192.168.3.10#{x}", ["vm.node#{x}"]
                 end
             end
 
@@ -43,9 +43,9 @@ Vagrant.configure("2") do |config|
             cfg.ssh.insert_key = "true"
 
             # do NOT check the correct additions version when booting this machine（插件安装：vagrant plugin install vagrant-vbguest）
-            cfg.vbguest.auto_update = false
+            # cfg.vbguest.auto_update = false
 
-            cfg.vm.synced_folder "/Users/ehlxr/works/Vagrant/vm_share", "/root/"
+            cfg.vm.synced_folder "/Users/ehlxr/works/Vagrant/vm_share", "/root/", type: "virtualbox"
             cfg.vm.synced_folder "/Users/ehlxr/works/Vagrant", "/vagrant", disabled: true
 
             # 开机运行命令

@@ -2,8 +2,22 @@
 Vagrant.configure("2") do |config|
     config.vm.box = "centos-7.2"
     config.vm.network "private_network", ip: "192.168.3.3"
+    config.vm.hostname="vm.node"
+    config.vm.provider "virtualbox" do |vb|
+        # Display the VirtualBox GUI when booting the machine
+        vb.gui = false
+
+        # Customize the amount of memory on the VM:
+        vb.memory = "1024"
+
+        vb.cpus = 1
+
+        # 名称指的是在 VirtualBox 中显示的名称
+        vb.name = "vmhost-base"
+    end
+
     config.vbguest.auto_update = false
-    config.vm.synced_folder "/Users/ehlxr/works/Vagrant", "/vagrant"
+    config.vm.synced_folder "/Users/ehlxr/works/Vagrant", "/vagrant", type: "virtualbox"
     # 自定义初始化执行脚本
     config.vm.provision "shell", path: "../config/init.sh"
 

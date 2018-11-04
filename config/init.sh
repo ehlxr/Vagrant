@@ -38,11 +38,11 @@ sed -i 's/^PasswordAuthentication.*/PasswordAuthentication\ yes/g' /etc/ssh/sshd
 echo -e "\033[1;33mConfig dns...\033[0m"
 cp /vagrant/config/resolv.conf /etc/
 
-# echo -e "\033[1;33mUpdating kernel...\033[0m"
-# rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
-# rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
-# yum --enablerepo=elrepo-kernel install  kernel-ml-devel kernel-ml -y
-# grub2-set-default 0
+echo -e "\033[1;33mUpdating kernel...\033[0m"
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm
+yum --enablerepo=elrepo-kernel install  kernel-ml-devel kernel-ml -y
+grub2-set-default 0
 
 echo -e "\033[1;33mInstall docker...\033[0m"
 wget -qO- https://get.docker.com | sh
