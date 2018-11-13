@@ -28,6 +28,7 @@ git clone https://github.com/zsh-users/zsh-history-substring-search.git /root/.o
 echo -e "\033[1;33mConfig oh-my-zsh...\033[0m"
 cp -f /vagrant/config/zshrc ~/.zshrc
 cp -f /vagrant/config/my.zsh ~/.oh-my-zsh/custom/
+cp -f /vagrant/config/gnzh.zsh-theme ~/.oh-my-zsh/themes/
 
 echo -e "\033[1;33mConfig ssh...\033[0m"
 mkdir -p ~/.ssh && cat /vagrant/config/authorized.key >> ~/.ssh/authorized_keys
