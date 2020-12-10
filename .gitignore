@@ -2,3 +2,4 @@
 *.box
 .vagrant
 vm_share
+*.log

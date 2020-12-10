@@ -4,7 +4,9 @@ Vagrant.configure("2") do |config|
     vms.each do |i|
         config.vm.define "vm#{i}" do |cfg|
             # 设置虚拟机的 Box
-            cfg.vm.box = "centos-7.5-ehlxr"
+            # cfg.vm.box = "centos-7.5-ehlxr"
+            cfg.vm.box = "ubuntu-bionic"
+            cfg.vm.box_url = "https://mirrors.ustc.edu.cn/ubuntu-cloud-images/bionic/current/bionic-server-cloudimg-amd64-vagrant.box"
 
             # 不检查 box 更新
             cfg.vm.box_check_update = false
@@ -38,30 +40,30 @@ Vagrant.configure("2") do |config|
             end
 
             # 默认 root 登陆
-            cfg.ssh.username = "root"
-            cfg.ssh.password = "vagrant"
-            cfg.ssh.insert_key = "true"
+            # cfg.ssh.username = "root"
+            # cfg.ssh.password = "vagrant"
+            # cfg.ssh.insert_key = "true"
 
             # do NOT check the correct additions version when booting this machine（插件安装：vagrant plugin install vagrant-vbguest）
             cfg.vbguest.auto_update = false
 
             # cfg.vm.synced_folder "./", "/root/", type: "virtualbox"
-            cfg.vm.synced_folder "./", "/vagrant", disabled: true
-            cfg.vm.synced_folder "./", "/root/share", type: "virtualbox"
+            # cfg.vm.synced_folder "./", "/vagrant", disabled: true
+            # cfg.vm.synced_folder "./", "/root/share", type: "virtualbox"
 
             # 开机运行命令
             cfg.vm.provision "shell", run: "always", inline: <<-SHELL
                 echo -e "\033[1;33mConfig ssh...\033[0m"
-                mkdir -p ~/.ssh && cat /root/share/config/authorized.key >> ~/.ssh/authorized_keys
+                mkdir -p ~/.ssh && cat /vagrant/config/authorized.key >> ~/.ssh/authorized_keys
                 sed -i 's/^#RSAAuthentication.*/RSAAuthentication\ yes/g' /etc/ssh/sshd_config
                 sed -i 's/^#PubkeyAuthentication.*/PubkeyAuthentication\ yes/g' /etc/ssh/sshd_config
                 sed -i 's/^PasswordAuthentication.*/PasswordAuthentication\ yes/g' /etc/ssh/sshd_config
-                echo -e "\033[1;33mConfig dns...\033[0m"
-                cp /root/share/config/resolv.conf /etc/
-                echo -e "\033[1;33mConfig oh-my-zsh...\033[0m"
-                cp -f /root/share/config/zshrc ~/.zshrc
-                cp -f /root/share/config/my.zsh ~/.oh-my-zsh/custom/
-                cp -f /root/share/config/ehlxr2.zsh-theme ~/.oh-my-zsh/custom/themes/
+            #     echo -e "\033[1;33mConfig dns...\033[0m"
+            #     cp /vagrant/config/resolv.conf /etc/
+            #     echo -e "\033[1;33mConfig oh-my-zsh...\033[0m"
+            #     cp -f /vagrant/config/zshrc ~/.zshrc
+            #     cp -f /vagrant/config/my.zsh ~/.oh-my-zsh/custom/
+            #     cp -f /vagrant/config/ehlxr2.zsh-theme ~/.oh-my-zsh/custom/themes/
             SHELL
 
             # 自定义初始化执行脚本
