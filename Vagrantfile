@@ -5,8 +5,8 @@ Vagrant.configure("2") do |config|
         config.vm.define "vm#{i}" do |cfg|
             # 设置虚拟机的 Box
             # cfg.vm.box = "centos-7.5-ehlxr"
-            cfg.vm.box = "ubuntu-bionic"
-            cfg.vm.box_url = "https://mirrors.ustc.edu.cn/ubuntu-cloud-images/bionic/current/bionic-server-cloudimg-amd64-vagrant.box"
+            cfg.vm.box = "ubuntu-focal"
+            cfg.vm.box_url = "https://mirrors.ustc.edu.cn/ubuntu-cloud-images/focal/current/focal-server-cloudimg-amd64-vagrant.box"
 
             # 不检查 box 更新
             cfg.vm.box_check_update = false
