@@ -1,5 +1,15 @@
 {
+  "experimental": false,
+  "debug": true,
   "registry-mirrors": [
-    "https://registry.docker-cn.com"
+    "https://hub-mirror.c.163.com",
+    "https://mirror.baidubce.com",
+    "https://g24agb7f.mirror.aliyuncs.com",
+    "https://docker.mirrors.ustc.edu.cn",
+    "https://mirror.ccs.tencentyun.com",
+    "https://dockerhub.azk8s.cn",
+    "https://hub-mirror.c.163.com",
+    "https://docker.pkg.github.com/",
+    "https://registry.enncloud.cn/"
   ]
 }

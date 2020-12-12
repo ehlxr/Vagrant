@@ -2,8 +2,12 @@ export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="ehlxr2"
 
-plugins=(git wd sudo zsh-syntax-highlighting zsh-autosuggestions extract history-substring-search)
+plugins=(git wd sudo zsh-syntax-highlighting zsh-autosuggestions extract history-substring-search docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
 # source ~/.bash_profile
+
+alias di='docker images'
+alias dp='docker ps -a'
+alias ds='docker stats'
